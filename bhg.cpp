@@ -1,57 +1,31 @@
 #include<iostream>
+#include<string.h>
 using namespace std;
-
-void indDeletion(int a[], int n, int index)
-{
-    // code for Deletion
-    for (int i = index; i < n-1; i++)
-    {
-        a[i] = a[i + 1];
-    }
-}
-
+ 
 int main()
 {
-    int t;
-    int n,s;
+    string word="hello";
+    string t;
     cin>>t;
-    int sum=0,count=0;
-    for (int i = 0; i < t; i++)
+    int l=t.length();
+ 
+    int a=0,count=0;
+ 
+    for(int i=0;i<l;i++)
     {
-        cin >> n;
-        int a[n];
-        for (int i = 0; i < n; i++)
+        if(t[i]==word[a])
         {
-            cin>>a[i];
-            sum=sum + a[i];
-        }
-        for (int i = 0; i < n; i++)
-        {
-            int list[n];
-            if (sum < s)
-            {
-                list[i]=0;
-                break;
-            }
-            
-            indDeletion(a,n,0);
+           a++;
             count++;
-            indDeletion(a,n,n);
-            count++;
-            sum = sum - (a[0] + a[n]);
-            if (sum = s)
-            {
-                list[i]=count;
-            }
-            count=0;
-            cout<<list[i];
-            
         }
-    }
-    //for (int i = 0; i < t; i++)
-    //{
-    //    cout<<list[i]<<endl;
-    //}
     
+    if(count==5)
+    {
+       cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
     return 0;
+    }
 }
