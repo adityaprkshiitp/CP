@@ -10,7 +10,7 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif
-    string s,c;
+    string s;
     cin>>s;
     int count=0;
     for (int i = 0; i < s.size(); i++)
@@ -18,7 +18,8 @@ int main()
         if(s[i] >= 97 && s[i] <= 122)
         {
             count++;
-            c=c+ s[i];
+            char c = s[i];
+            
         }
     }
     for (int i = 0; i < count; i++)
