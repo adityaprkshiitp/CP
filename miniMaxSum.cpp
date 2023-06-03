@@ -2,14 +2,32 @@
 #include <math.h>
 using namespace std;
 
+long int maxArr(long int *arr, unsigned int n){
+    long int max = arr[0];
+    for (int i = 0; i < 5; i++)
+    {
+        if(arr[i] > max){
+            max = arr[i];
+        } 
+    }
+
+    return max;
+}
+
+long int minArr(long int *arr, unsigned int n){
+    long int min = arr[0];
+    for (int i = 0; i < 5; i++)
+    {
+        if(arr[i] < min){
+            min = arr[i];
+        } 
+    }
+
+    return min;
+}
 int main()
 {
-    // #ifndef ONLINE_JUDGE
-    // freopen("error.txt", "w", stderr);
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
-    // #endif
-    int n = 5;
+    unsigned int n = 5;
     long int arr[n];
     for (int i = 0; i < 5; i++)
     {
@@ -23,21 +41,9 @@ int main()
     long int e = arr[4] + arr[0] + arr[1] + arr[2];
 
     long int sumArr[5] = {a,b,c,d,e};
-    long int min = sumArr[0];
-    for (int i = 0; i < 5; i++)
-    {
-        if(sumArr[i] < min){
-            min = sumArr[i];
-        } 
-    }
+    long int min = minArr(sumArr,n);
+    long int max = maxArr(sumArr,n);
 
-    long int max = sumArr[0];
-    for (int i = 0; i < 5; i++)
-    {
-        if(sumArr[i] > max){
-            max = sumArr[i];
-        } 
-    }
     // for (int i = 0; i < 5; i++){
     //     cout << i + 1 << " : " << sumArr[i] << endl;
     // }
