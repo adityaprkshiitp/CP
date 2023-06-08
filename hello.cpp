@@ -1,34 +1,74 @@
 #include <bits/stdc++.h>
 #include <math.h>
 using namespace std;
-typedef long long int ll;
 
-int gcd(int a, int b)
-{
-    if (b == 0){
-        return a;
-    }
-    return gcd(b, a % b);
-}
-
-int findLCM(int n,ll arr[]){
-    int result = arr[0];
+void migBirds(int n,int arr[]){
+    int arr1[5];
+    // for (int i = 0; i < 5; i++){
+    //     arr1[i] = count(n,arr,i+1);
+    // }
+    int c1 = 0;
     for (int i = 0; i < n; i++){
-        result = (arr[i] * result) / gcd(arr[i],result);
+        if(arr[i] == 1){
+            c1++;
+        }
     }
-    return result;
+
+    int c2 = 0;
+    for (int i = 0; i < n; i++){
+        if(arr[i] == 2){
+            c2++;
+        }
+    }
+    
+    int c3 = 0;
+    for (int i = 0; i < n; i++){
+        if(arr[i] == 3){
+            c3++;
+        }
+    }
+
+    int c4 = 0;
+    for (int i = 0; i < n; i++){
+        if(arr[i] == 4){
+            c4++;
+        }
+    }
+
+    int c5 = 0;
+    for (int i = 0; i < n; i++){
+        if(arr[i] == 5){
+            c5++;
+        }
+    }
+    
+    if(c1 >= c2 && c1 >= c3 && c1 >= c4 && c1 >= c5){
+        cout<<"1";
+    }else if(c2 >= c3 && c2 >= c4 && c2 >= c5){
+        cout<<"2";
+    }else if(c3 >= c4 && c3 >= c5){
+        cout << "3";
+    }else if(c4 >= c5){
+        cout << "4";
+    }else{
+        cout<< "5";
+    }
+
 }
 
-int main()
-{
+int main(){
+
+    // input
     int n;
     cin >> n;
-    ll arr[n];
+    int arr[n];
     for (int i = 0; i < n; i++){
         cin >> arr[i];
     }
-    int LCM = findLCM(n,arr);
-    cout << LCM;
+    // sort(arr[0],arr[n]);
 
+    migBirds(n,arr);
+    
     return 0;
+    
 }
