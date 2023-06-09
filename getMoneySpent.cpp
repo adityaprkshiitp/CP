@@ -27,14 +27,19 @@ int getMoneySpent(int b,int n,int m,int arr[],int arr1[]){
             }
         }
     }
-
+    // cout << k;
+    // for (int i = 0; i < k; i++)
+    // {
+    //     cout << avg[i] << " ";
+    // }
+    
     int max = maxArr(avg,k);
     if(max <= b){
         return max;
     }else{
         return -1;
     }
-    
+
 }
 
 int main()
@@ -53,6 +58,7 @@ int main()
     sort ( drives, drives + m, greater<int>());
 
     int result = getMoneySpent(b,n,m,keyboard,drives);
+    // cout << endl;
     cout << result;
 
     return 0;
