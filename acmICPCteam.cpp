@@ -1,46 +1,36 @@
-#include<bits/stdc++.h>
-#include<math.h>
+#include <iostream>
+#include <vector>
+#include <string>
+
 using namespace std;
 
-int countTopic(string a,string b){
+vector <string> v;
+int main()
+{
+    int n,m;
+    cin >> n >> m;
+    string s;
+    for ( int i = 0; i < n; i++ ) {
+        cin >> s;
+        v.push_back(s);
+    }
+    int ans = 0;
     int cnt = 0;
-    for (int i = 0; i < a.size(); i++){
-        if(a[i]=='1' || b[i] == '1'){
-            cnt++;
+    for ( int i = 0; i < n - 1; i++ ) {
+        for ( int j = i+1; j < n; j++ ) {
+            int val = 0;
+            for ( int k = 0; k < m; k++ ) {
+                if ( v[i][k] == '1' || v[j][k] == '1' ) val++;
+            }
+            if ( ans < val ) {
+                ans = val;
+                cnt = 1;
+            }
+            else if ( ans == val ) {
+                cnt++;
+            }
         }
     }
-    return cnt;
-}
-
-int main(){
-    int n; scanf("%d",&n);
-    int m; scanf("%d",&m);
-    string arr[n];
-    for (int i = 0; i < n; i++){
-        // arr[i] = (char*)malloc(m * sizeof(char));
-        // scanf("%s",arr[i]); fuck this shit
-        cin >> arr[i];
-    }
-    int maximum = 0;
-    int final[n];
-    int k = 0;
-    for (int i = 0; i < n; i++){
-        for (int j = i+1; j < n; j++){
-            int total = countTopic(arr[i],arr[j]);
-            maximum = max(maximum,total);
-            final[k] = total;
-            k++;
-        }
-    }
-    int count = 0;
-    for (int i = 0; i < k; i++)
-    {
-        if(final[i] == maximum){
-            count++;
-        }
-    }
-    printf("%d\n",maximum);
-    printf("%d",count);
-    
+    cout << ans << endl << cnt << endl;
     return 0;
 }
