@@ -22,16 +22,16 @@ int main(){
     }else{
         for (int i = 0; i < k ; i++)
         {
-            maximum = *max_element(arr+i, arr + n);
+            // maximum = *max_element(arr+i, arr + n);
             max_pos = distance(arr, max_element(arr+i, arr + n));
             // printf("max = %d ,max_pos = %d\n",maximum,max_pos);
-            if(arr[i] == maximum){
+            if(arr[i] == n-i){
                 if(k+1<=n){k++;}
                 continue;
             }
-            if(arr[i] != maximum){
+            if(arr[i] != n-i){
                 help = arr[i];
-                arr[i] = maximum;
+                arr[i] = n-i;
                 arr[max_pos] = help;
                 // swap1(mid,max_pos);
             }

@@ -1,7 +1,15 @@
-#include<bits/stdc++.h>
-#include<math.h>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
+
+struct Interval {
+    int start, end;
+};
+
+bool check(Interval res){
+
+
+}
 
 int main(){
     #ifndef ONLINE_JUDGE
@@ -10,38 +18,18 @@ int main(){
     freopen("output.txt", "w", stdout);
     #endif
     ll n; scanf("%lld",&n);
-    ll k; scanf("%lld",&k);
-    ll arr[n];
-    for (ll i = 0; i < n; i++)
-    {
-        scanf("%lld",&arr[i]);
+    ll order_no[n]; 
+    ll prep_time[n];
+    ll serve_time[n], res[n];
+    for (ll i = 0; i < n; ++i) {
+        scanf("%lld",&order_no[i]);
+        scanf("%lld",&prep_time[i]);
+        serve_time[i] = order_no[i] + prep_time[i];
+        res[n] = i;
     }
-    ll maximum,max_pos,help;
-    if(k>=n){
-        sort(arr,arr+n,greater<int>());
-    }else{
-        for (ll i = 0; i < k ; i++)
-        {
-            maximum = *max_element(arr+i, arr + n);
-            // max_pos = distance(arr, max_element(arr+i, arr + n));
-            // printf("max = %d ,max_pos = %d\n",maximum,max_pos);
-            if(arr[i] != maximum){
-                help = arr[i];
-                arr[i] = maximum;
-                arr[distance(arr, max_element(arr+i, arr + n))] = help;
-                // swap1(mid,max_pos);
-            }else{
-                k++;
-                continue;
-            }
-
-            // cout << "\n";
-        }
+    sort(res, res + n, check);
+    for (ll i = 0; i < n; ++i) {
+        printf("%lld ",res[i]);
     }
-    for (ll i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
-    
-    return 0;    
+    return 0;
 }
