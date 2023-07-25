@@ -9,20 +9,20 @@ long long getMaxScore(vector<int>& troops) {
     long long score = 0;
     int turns = 1;
 
-    while (!troops.empty()) {
-        int left = troops.front();
-        int right = troops.back();
-
-        if (left >= right) {
-            score += 1LL * left * turns;
-            troops.erase(troops.begin());
-        } else {
-            score += 1LL * right * turns;
+    int maximum = *max_element(troops.begin(),troops.end());
+    for (int i = 0; i < n; i++)
+    {
+        score += (min(troops.back(),troops.front()) * (i+1)) + maximum;
+        if(troops.back() < troops.front()){
             troops.pop_back();
+        }else{
+            troops.erase(troops.begin());
         }
-
-        turns++;
+        // cout << "score : " << score << endl;
     }
+    
+
+
 
     return score;
 }
@@ -41,36 +41,23 @@ int main() {
         cin >> n;
 
         vector<int> troops(n);
-        vector<int> digits(n);
+        vector<int> digits;
         string numberStr;
-        for (int i = 0; i < n; i++)
-        {
-            cin >> numberStr[i];
-        }
+        cin >> numberStr;
         
         for (char c : numberStr) {
             if (isdigit(c)) {
-                digits.push_back(c - '0');
+                int x = c - '0';
+                digits.push_back(x);
             }
         }
 
-        cout << "Digits as single-digit integers: ";
+        int k = 0;
         for (int digit : digits) {
-            cout << digit << " ";
+            troops[k] = digit;
+            // cout << troops[k] << " ";
+            k++;
         }
-        cout << endl;
-
-        // int k = 0;
-        // for (int digit : digits) {
-        //     troops[k] = digit;
-        //     k++;
-        // }
-
-        // for (int i = 0; i < k; i++)
-        // {
-        //     cout << troops[i] << " ";
-        // }
-        // cout << endl;
         
 
 
