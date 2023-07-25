@@ -22,11 +22,11 @@ void solve(string str, int n){
 
 int main(int argc, char const *argv[])
 {
-     #ifndef ONLINE_JUDGE
-    freopen("error.txt", "w", stderr);
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    #endif
+    //  #ifndef ONLINE_JUDGE
+    // freopen("error.txt", "w", stderr);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+    // #endif
     string str;
     cin >> str;
     int n = str.size();
