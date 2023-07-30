@@ -1,82 +1,59 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+typedef long long int ll;
 
 using namespace std;
 
-long long getMaxScore(vector<int>& troops) {
-    int n = troops.size();
-    long long score = 0;
-    int turns = 1;
-
-    while (!troops.empty()) {
-        int left = troops.front();
-        int right = troops.back();
-
-        if (left >= right) {
-            score += 1LL * left * turns;
-            troops.erase(troops.begin());
-        } else {
-            score += 1LL * right * turns;
-            troops.pop_back();
-        }
-
-        turns++;
+ll check( ll count){
+    ll res = 0;
+    if(count == 0){
+        return 0;
+    }else if(count == 1){
+        return 1;
+    }else{
+        res += count/2;
+        res += count%2;
+        return res;
     }
-
-    return score;
 }
 
-int main() {
-    #ifndef ONLINE_JUDGE
-    freopen("error.txt", "w", stderr);
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    #endif
-    int t; // Number of test cases
-    cin >> t;
+int main(int argc, char const *argv[])
+{
+    // #ifndef ONLINE_JUDGE
+    // freopen("error.txt", "w", stderr);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+    // #endif
+    ll t; scanf("%lld",&t);
+    while(t--){
+        ll n;
+        vector<ll> vec;
+        scanf("%lld",&n);
+        // if(n==1){
+        //     printf("0\n");
+        //     continue;
+        // }
+        for (ll i = 0; i < n; i++)
+        {
+            ll temp;
+            scanf("%lld",&temp);
+            vec.push_back(temp);
+        }
 
-    while (t--) {
-        int n; // Number of troops
-        cin >> n;
-
-        vector<int> troops(n);
-        vector<int> digits(n);
-        string numberStr;
+        ll count =  0;
         for (int i = 0; i < n; i++)
         {
-            cin >> numberStr[i];
-        }
-        
-        for (char c : numberStr) {
-            if (isdigit(c)) {
-                digits.push_back(c - '0');
+            // cout << " vec[i] : " << vec[i] << " i + 1 : " << i+1 << endl;
+
+            if(vec[i] == i + 1){
+                count++;
             }
         }
-
-        cout << "Digits as single-digit integers: ";
-        for (int digit : digits) {
-            cout << digit << " ";
-        }
-        cout << endl;
-
-        // int k = 0;
-        // for (int digit : digits) {
-        //     troops[k] = digit;
-        //     k++;
-        // }
-
-        // for (int i = 0; i < k; i++)
-        // {
-        //     cout << troops[i] << " ";
-        // }
-        // cout << endl;
+        // cout << "count : " << count << endl;
+        ll res = check(count);
+        printf("%lld\n",res);
         
-
-
-        long long maxScore = getMaxScore(troops);
-        cout << maxScore << endl;
     }
-
     return 0;
 }
