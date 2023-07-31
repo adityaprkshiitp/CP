@@ -1,46 +1,60 @@
 #include <bits/stdc++.h>
 using namespace std;
+typedef long long int ll;
+typedef vector<ll> vec;
 
-string hackerrankInString(string s) {
-    int s_size = s.size();
-    char h = 'h'; char a = 'a'; char c = 'c'; char k = 'k'; char e = 'e';
-    char r = 'r'; char n = 'n';
-    size_t a1 = s.find(h);
-    size_t b1 = s.find(a,a1+1);
-    size_t c1 = s.find(c,b1+1);
-    size_t d1 = s.find(k,c1+1);
-    size_t e1 = s.find(e,d1+1);
-    size_t f1 = s.find(r,e1+1);
-    size_t g1 = s.find(r,f1+1);
-    size_t h1 = s.find(a,g1+1);
-    size_t i1 = s.find(n,h1+1);
-    size_t j1 = s.find(k,i1+1);
-    size_t arr[10] = {a1,b1,c1,d1,e1,f1,g1,h1,i1,j1};
-    // size_t brr[10] = {a1,b1,c1,d1,e1,f1,g1,h1,i1,j1};
-    // vector<size_t> vec;
+#define MAX_STRING 1000;
+
+vec scores(set<char> mid, int arr[]){
+    vec score;
+    int mid_size = mid.size();
+    vec res(mid.begin(),mid.end());
     
-    // sort(arr,arr+10);
-    // int count = 0;
-    // for (int i = 0; i < 10; i++) {
-    //     if(arr[i] == brr[i]){
-    //         count++;
-    //     }else{
-    //         return "NO";
-    //     }
-    // }
-    
-    // return "YES";
-    // for (int i = 0; i < 10; i++)
-    // {
-    //     cout << arr[i] << " ";
-    // }
-    
-    
-    if(is_sorted(arr,arr+10)){
-        return "YES";
-    }else{
-        return "NO";
+    for (int i = 0; i < mid_size; i++)
+    {
+        ll base = ((res[i] - 'a')+1);
+        while(arr[i]--){
+            score.push_back(base);
+        }
     }
+    
+    return score;
+}
+
+vector<string> weightString(string s, vec vec1){
+    int arr[26] = {0};
+    set<char> mid;
+    int s_size = s.size();
+    vec res;
+    for (int i = 0; i < s_size; i++)
+    {
+        mid.insert(s[i]);
+        arr[s[i] - 'a']++;
+    }
+    
+
+    vec possibleScores = scores(mid,arr);
+    cout << "londa";
+    int m = possibleScores.size();
+    int q = vec1.size();
+    vector<string> ans;
+    for (int i = 0; i < q; i++)
+    {
+        bool check = false;
+        for (int j = 0; j < m; j++)
+        {
+            if(vec1[i] == possibleScores[j]){
+                check = true;
+                ans[i] = "YES";
+                continue;
+            }
+        }
+        if(!check){
+            ans[i] = "NO";
+        }
+    }
+    
+    return ans;
 }
 
 int main()
@@ -50,17 +64,25 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif
-    int t; scanf("%d",&t);
-    while(t--){
-        string s;
-        cin >> s;
-        string res = hackerrankInString(s);
-        cout << res << endl;
-        
+    string s;
+    cin >> s;
+    ll n; scanf("%lld",&n);
+    vec vec1;
+    cout << "lauda";
+    for (int i = 0; i < n; i++)
+    {
+        ll temp;
+        scanf("%lld",&temp);
+        vec1.push_back(temp);
+    }
+    
+    vector<string> res = weightString(s,vec1);
+    for (int i = 0; i < n; i++)
+    {
+        cout << res[i] << endl;
     }
     
 
-    
 
     return 0;
 }
