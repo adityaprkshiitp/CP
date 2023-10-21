@@ -1,33 +1,67 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef unsigned long long int ll;
+typedef long long int ll;
 typedef vector<ll> vec;
 
-int main()
+int k = 0;
+
+ll* insertX(ll n, ll arr[],
+            ll x, ll pos)
 {
-    // #ifndef ONLINE_JUDGE
-    // freopen("error.txt", "w", stderr);
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
-    // #endif
-    ll t; scanf("%lld",&t);
+    k++;
+    ll i;
+ 
+    // increase the size by 1
+    n++;
+ 
+    // shift elements forward
+    for (i = n; i >= pos; i--)
+        arr[i] = arr[i - 1];
+ 
+    // insert x at pos
+    arr[pos - 1] = x;
+ 
+    return arr;
+}
+
+int main() {
+    #ifndef ONLINE_JUDGE
+    freopen("error.txt", "w", stderr);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+    int t; scanf("%d",&t);
     while(t--){
         ll n; scanf("%lld",&n);
-        ll count = 0;
-        // for (ll i = 1; i <= n/2; i++) {
-        //     if (n % i == 0) {
-        //         // cout << i << " ";
-        //         count++;
-        //     }
-        // }
-        ll i = 1;
-        while(n % i == 0){
-            count++;
-            i++;
+        ll arr[n];
+        ll brr[2*n];
+        for (ll i = 0; i < n; i++)
+        {
+            scanf("%lld",&arr[i]);
+            brr[i] = arr[i];
         }
-        printf("%lld\n",count);
-
+        for (ll i = 1; i < n; i++)
+        {
+            if(arr[i-1] < arr[i]){
+                if(arr[i-1] > 1){
+                    insertX(2*n,brr,arr[i-1]-1,i);
+                }
+            }else if(arr[i] < arr[i-1]){
+                if(arr[i] > 1){
+                    insertX(2*n,brr,arr[i]-1,i);
+                }
+            }
+        }
+        cout << k + n << endl;
+        for (int i = 0; i < k+n; i++)
+        {
+            cout << brr[i] << " ";
+        }
+        cout << endl;
+        
+        
+        
     }
-    
+
     return 0;
 }
