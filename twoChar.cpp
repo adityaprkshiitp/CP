@@ -2,18 +2,17 @@
 using namespace std;
 typedef long long int ll;
 
-string deleteRep(string s,char x,int n){
-    for (int i = 0; i < n; i++) {
-        if(s[i] == x){
-            s.erase(i);
+bool check(string t){
+    if(t.size() < 2){return 0;}
+    char a = t[0];
+    char b = t[1];
+    if(a == b){return 0;}
+    for (int i = 1; i < t.size(); i++){
+        if(t[i - 1] == t[i]){
+            return 0;
         }
     }
-    for (int i = 0; i < n; i++)
-    {
-        cout << s[i] << " ";
-    }
-    
-    return s;
+    return 1;
 }
 
 int main()
@@ -23,38 +22,19 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif
-    int n; scanf("%d",&n);
-    string s;
-    // cout << "lol";
-    for (int i = 0; i < n; i++)
-    {
-        scanf("%c",&s[i]);
-    }
-    int res;
-
-    for (int i = 0; i < n - 1; i++) {
-        if(s[i] == s[i+1]){
-            s = deleteRep(s,s[i],n);
+    int n; cin >> n;
+    string s; cin >> s;
+    int maxi = 0;
+    for (char i = 'a'; i <= 'z'; i++){
+        for (char j = 'a'; j <= 'z'; j++){
+            string t;
+            for (int a = 0; a < n; a++){
+                if(s[a] == i || s[a] == j){t += s[a];}
+            }
+            int size_t = t.size();
+            if(check(t)){maxi = max(maxi,size_t);}
         }
     }
-    // cout << "lauda";
-    int arr[26] = {0};
-    for (int i = 0; i < n; i++) {
-        arr[s[i] - 'a']++;
-    }
-    // for (int i = 0; i < 26; i++)
-    // {
-    //     cout << arr[i] << " ";
-    // }
-    // cout << endl;
-    
-    sort(arr,arr+26);
-    // for (int i = 0; i < 26; i++)
-    // {
-    //     cout << arr[i] << " ";
-    // }
-
-    printf("%d",arr[25] + arr[24]);
-    
+    cout << maxi;
     return 0;
 }

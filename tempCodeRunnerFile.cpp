@@ -1,1 +1,2 @@
-        // cout << arr2[0];
+
+            cin >> arr[i];

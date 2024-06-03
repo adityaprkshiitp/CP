@@ -14,7 +14,11 @@ const int magic_squares_3x3[8][9] = {
 int matrix[9];
 
 int main() {
-    
+    #ifndef ONLINE_JUDGE
+    freopen("error.txt", "w", stderr);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
     for (int i = 0; i < 9; i++) scanf("%d", &matrix[i]);
     int min_cost = 100;
     for (int i = 0; i < 8; i++) {

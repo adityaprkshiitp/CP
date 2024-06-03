@@ -1,47 +1,43 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
+typedef long long int ll;
+typedef vector<ll> vec;
 
-string caesarCipher(string s, int k) {
-    string res;
-    int n = s.size();
-    for (int i = 0; i < n; i++) {
-        if(s[i] <= 'z' && s[i] >= 'a'){
-            char x = (s[i] - 'a' + k);
-            x %= 26;
-            x += 'a';
-            res.push_back(x);
-        }else if(s[i] <= 'Z' && s[i] >= 'A'){
-            char x = (s[i] - 'A' + k);
-            x %= 26;
-            x += 'A';
-            res.push_back(x);
-        }else {
-            res.push_back(s[i]);
-        }
-    }
-    return res;
-}
-
-int main()
-{
-     #ifndef ONLINE_JUDGE
+int main(){
+    #ifndef ONLINE_JUDGE
     freopen("error.txt", "w", stderr);
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif
-    int n; scanf("%d",&n);
-    string s;
-    for(int i = 0; i < n; i++){
-        cin >> s[i];
-    }
-    int k; scanf("%d",&k);
-    string ans;
-    ans = caesarCipher(s,k);
-    for (int i = 0; i < n; i++)
+    int n; cin >> n;
+    string s; cin >> s;
+    int k; cin >> k;
+    k %= 26;
+    for (int i = 0; i < s.size(); i++)
     {
-        cout << ans[i];
+        if(s[i] >= 'a' && s[i] <= 'z'){
+            if(s[i] + k <= 'z'){
+                s[i] = s[i] + k;
+                cout << s[i];
+                continue;
+            }else{
+                s[i] = 'a' + s[i] + k - 'z' - 1;
+                cout << s[i];
+                continue;
+            }
+        }else if(s[i] >= 'A' && s[i] <= 'Z'){
+            if(s[i] + k <= 'Z'){
+                s[i] = s[i] + k;
+                cout << s[i];
+                continue;
+            }else{
+                s[i] = 'A' + s[i] + k - 'Z' - 1;
+                cout << s[i];
+                continue;
+            }
+        }
+        cout << s[i];
     }
     
-
     return 0;
 }

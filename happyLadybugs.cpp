@@ -2,11 +2,11 @@
 using namespace std;
 
 int main(){
-    // #ifndef ONLINE_JUDGE
-    // freopen("error.txt", "w", stderr);
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
-    // #endif
+    #ifndef ONLINE_JUDGE
+    freopen("error.txt", "w", stderr);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
     int t; cin >> t;
     while(t--){
         int n; cin >> n;
@@ -30,9 +30,6 @@ int main(){
         int count = 0;
         for (int i = 0; i < n; i++)
         {
-            if(s[i] == 'K'){
-                // cout << "booga" << endl;
-            }
             if(s[i] == s[i+1]){
                 i++;
             }else if(s[i] == s[i-1]){

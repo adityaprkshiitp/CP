@@ -14,16 +14,12 @@ int main()
         int div[] = {7,14,21,28,35,42,49,56,63,70,77,84,91,98};
         int count = 0;
         int ex = sizeof(div)/sizeof(div[0]);
-        for (int i = 0; i < ex; i++) {
+        for (int i = 0; i < ex; i++){
             if(n==div[i] || n==div[i] + 1 || n==1){
                 count++;
             }
         }
-        if(count){
-            printf("Second\n");
-        }else{
-            printf("First\n");
-        }
+        puts((count)?"Second":"First");
     }
     return 0;
 }

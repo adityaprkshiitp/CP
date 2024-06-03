@@ -1,13 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+typedef long long int ll;
 typedef vector<int> vec;
-void removeInt(int arr[],int n, int x){
-    n--;
-    for (int i = x; i < n; i++)
-    {
-        arr[i] = arr[i+1];
-    }
-}
+#define MAX 1000001;
 
 int main(){
     #ifndef ONLINE_JUDGE
@@ -15,54 +10,39 @@ int main(){
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif
-    // input
-    int n; scanf("%d",&n);
-    int arr[n];
+    int n; cin  >> n;
+    vec arr1(n);
+    for (int i = 0; i < n; i++){cin >> arr1[i];}
+    int m; cin >> m;
+    vec arr2(m);
+    for (int i = 0; i < m; i++){cin >> arr2[i];}
+    sort(arr1.begin(),arr1.end());
+    sort(arr2.begin(),arr2.end());
+    set<ll> s1;
+    vec t1;
     for (int i = 0; i < n; i++)
     {
-        scanf("%d",&arr[i]);
-
-    }
-    int m; scanf("%d",&m);
-    int brr[m];
-    int max = m;
-    for (int i = 0; i < m; i++)
-    {
-        scanf("%d",&brr[i]);
-    }
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < max; j++)
+        int count = 0;
+        ll temp = arr1[i];
+        for (int j = 0; j < m; j++)
         {
-            if(arr[i] == brr[j]){
-                // printf("%d : %d\n",arr[i],brr[j]);
-                removeInt(brr,m,j);
-                m--;
+            if(arr1[i] == arr2[j]){
+                arr2.erase(arr2.begin() + j);
+                count++;
                 break;
             }
         }
-        
-    }
-    sort(brr, brr + m);
-    // printf(" m : %d\n",m);
-    set<int> sa;
-    for (int i = 0; i < m; i++)
-    {
-        sa.insert(brr[i]);
-    }
-    
-    
-    // for (int i = 0; i < m; i++)
-    // {
-    //     printf("%d ",brr[i]);
-    // }
-    for (auto i : sa) {
-        if(i<10000*2){
-            cout << i << ' ';
+        if(count == 0){
+            s1.insert(temp);
         }
+        
+    }    
+    for (int i = 0; i < arr2.size(); i++){
+        s1.insert(arr2[i]);
     }
-    
-
+    for(auto it : s1){
+        cout << it << ' ';
+    }cout << endl;
     
     return 0;
 }

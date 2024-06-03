@@ -10,12 +10,11 @@ int gcd(int a, int b)
     }
     return gcd(b, a % b);
 }
-
 int gdd(int a, int b)
 {
   if (a == 0)
     return b;
-  return gcd(b % a, a);
+  return gdd(b % a, a);
 }
 
 int findHCF(ll arr[], int n)

@@ -1,32 +1,25 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-typedef vector<int> vec;
-#define LEN 100
-#define MAX 1000001
+typedef long long int ll;
+typedef vector<ll> vec;
 
 int main(){
+    int n; cin  >> n;
+    vector<pair<int, string>> arr;
+    for (int i = 0; i < n; i++){
+        int temp1; cin >> temp1;
+        string s1; cin >> s1;
+        if(i < n/2){s1 = '-';}
+        pair<int,string> p1 = make_pair(temp1,s1);
+        arr.push_back(p1);
+    }
+    for (int i = 0; i < 101; i++){
+        for (int j = 0; j < n; j++){
+            if(arr[j].first == i){
+                cout << arr[j].second << " ";
+            }
+        } 
+    }
     
-    int num;
-    vector<int> cnt[101];
-    string name[MAX];
-    int val[MAX];
-    int order[MAX];
-    cin >> num;
-    int stop = num/2;
-    int temp1;
-    string temp2;
-    for(int x = 0;x<num;x++){
-        cin >> temp1 >> temp2;
-        val[x] = temp1;
-        name[x] = temp2;
-        cnt[temp1].push_back(x);
-    }
-    for(int x = 0;x<100;x++){
-        for(vector<int>::iterator it = cnt[x].begin();it!=cnt[x].end();++it){
-            if((*it)<stop) cout << "- ";
-            else cout << name[*it] << " ";
-        }
-    }
-
-    return 0;
+    
 }

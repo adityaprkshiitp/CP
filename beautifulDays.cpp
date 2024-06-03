@@ -1,45 +1,29 @@
 #include <bits/stdc++.h>
-#include <math.h>
 using namespace std;
-
-int switchNumber(int n){
-    int reverseInt = 0;
-    int remainder;
-
-    while(n != 0) {
-        remainder = n % 10;
-        reverseInt = reverseInt * 10 + remainder;
-        n /= 10;
-    }
-
-    return reverseInt;
-}
-
-int beautifulDays( int arr[],int size,int k){
+int reverseDigits(int num) { 
+    int rev_num = 0; 
+    while (num > 0) { 
+        rev_num = rev_num * 10 + num % 10; 
+        num = num / 10; 
+    } 
+    return rev_num; 
+} 
+int main(int argc, char const *argv[]){
+    #ifndef ONLINE_JUDGE
+    freopen("error.txt", "w", stderr);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+    int a,j,k; cin >> a >> j >> k;
     int count = 0;
-    for (int i = 0; i < size; i++){
-        int reversed = switchNumber(arr[i]);
-        int absolute = abs(reversed - arr[i]);
-        if (absolute % k == 0){
-            count++;
-        }
+    for (int i = a; i <= j; i++) {
+        double reverse = reverseDigits(i);
+        double difference = abs(i-reverse);
+        double check = difference/k;
+        double a_int = static_cast<int>(check);
+        if(a_int == check){count++;}
     }
+    cout << count;
     
-    return count;
-}
-
-int main()
-{
-    int n,m,k;
-    cin >> n >> m >> k;
-    int size = m - n + 1;
-    int arr[size];
-    for (int i = 0; i < size; i++){
-        arr[i] = n + i;
-    }
-    
-    int result = beautifulDays(arr,size,k);
-    cout << result;
-
     return 0;
 }

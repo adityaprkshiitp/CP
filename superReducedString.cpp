@@ -1,36 +1,15 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-
-void solve(string str, int n){
-    for (int i = 0; i < n; i++)
-    {
-        if(str[i] == str[i+1]){
-            str.erase(i,2);
-            n -= 2;
-            i = -1;
-            // cout << " i : " << i << endl;
-            // cout << str << endl;
+int main(){
+    string s; cin >> s;
+    int n = s.size();
+    for (int i = 0; i < n;i++){
+        if(s[i] == s[i+1]){
+            s.erase(i,2);
+            i-=2; n -= 2;
         }
+        if(i==-2){i++;}      
     }
-    if(n==0){
-        printf("Empty string");
-    }else{
-        cout << str;
-    }
-    
-}
-
-int main(int argc, char const *argv[])
-{
-    //  #ifndef ONLINE_JUDGE
-    // freopen("error.txt", "w", stderr);
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
-    // #endif
-    string str;
-    cin >> str;
-    int n = str.size();
-    solve(str,n);
-    
+    (n<=0) ? cout << "Empty String" : cout << s;
     return 0;
 }

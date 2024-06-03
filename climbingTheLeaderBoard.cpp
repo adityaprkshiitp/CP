@@ -30,7 +30,8 @@ int main(int argc, char const *argv[])
         // ranked.erase(temp1);
 
         int pos = upper_bound(v.begin(), v.end(), temp1) - v.begin();
-        printf("%d\n", (int)v.size() - pos + 1);
+        cout << pos << endl;
+        // printf("%d\n", (int)v.size() - pos + 1);
 
     }
     

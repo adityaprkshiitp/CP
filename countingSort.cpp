@@ -1,39 +1,34 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-typedef vector<int> vec;
-#define LEN 100
+typedef long long int ll;
+typedef vector<ll> vec;
 
-void print(int result_arr[]){
-    for (int i = 0; i < LEN; i++)
-    {
-        int j = 0;
-        while( j < result_arr[i]){
-            printf("%d ",i);
-            j++;
-        }
-    }
-}
 int main(){
-
-    // input
-    int n; scanf("%d",&n);
-    int arr[n];
-    int result_arr[LEN] = {0};
-    for (int i = 0; i < n; i++)
-    {
-        scanf("%d",&arr[i]);
-        result_arr[arr[i]]++;
+    #ifndef ONLINE_JUDGE
+    freopen("error.txt", "w", stderr);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+    int n; cin  >> n;
+    vec arr(n);
+    vec res(100,0);
+    for (int i = 0; i < n; i++){
+        cin >> arr[i];
+        res[arr[i]]++;
     }
+    // for counting sort 1
+    // for (int i = 0; i < 100; i++)
+    // {
+    //     cout << res[i] << " ";
+    // }
 
-    // counting sort 1
+    // for counting sort 2
+    for (int i = 0; i < res.size(); i++){
+        for (int j = 0; j < res[i]; j++){
+            cout << i << " ";
+        }
+        
+    }
     
-    // print(result_arr);
-
-    // counting sort 2
-
-    print(result_arr);
-    
-    
-
     return 0;
 }
