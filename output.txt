@@ -1,7 +1,4 @@
-YES
-NO
-NO
-NO
-YES
-NO
-YES
+NGR : 2 3 4 -1 
+NGL : -1 -1 -1 -1 
+NSL : -1 1 2 3 
+NSR : -1 -1 -1 -1 

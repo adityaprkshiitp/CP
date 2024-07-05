@@ -28,13 +28,13 @@ int main()
     for (char i = 'a'; i <= 'z'; i++){
         for (char j = 'a'; j <= 'z'; j++){
             string t;
-            for (int a = 0; a < n; a++){
+            for (int a = 0; a < s.size(); a++){
                 if(s[a] == i || s[a] == j){t += s[a];}
             }
             int size_t = t.size();
             if(check(t)){maxi = max(maxi,size_t);}
         }
     }
-    cout << maxi;
+    cout << maxi << endl;
     return 0;
 }
