@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-typedef vector<ll> vec;
+typedef vector<int> vec;
 
 int main(){
     #ifndef ONLINE_JUDGE
@@ -9,32 +9,37 @@ int main(){
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif
-    int t; cin >> t;
-    while (t--){
-        int n; cin >> n;
-        vec arr(n);
-        vec mid;
-        mid.push_back(0);
-        for (int i = 0; i < n; i++){
-            cin >> arr[i];
+    string s; cin >> s;
+
+    // piche se tha
+    // int x = s.size();
+    // stack<int> st;
+    // while(x--){
+    //     if(s[x] == '-' && s[x-1] == '-'){
+    //         st.push(2);
+    //     }else if(s[x] == '.' && s[x-1] == '-'){
+    //         st.push(1);
+    //     }else if(s[x] == '.'){
+    //         st.push(0);
+    //     }
+    // }
+    // while(st.size()){
+    //     cout << st.top();
+    //     st.pop();
+    // }
+
+    for (int i = 0; i < s.size(); i++)
+    {
+        if(s[i] == '-' && s[i+1] == '-'){
+            cout << 2;
+            i++;
+        }else if(s[i] == '-' && s[i+1] == '.'){
+            cout << 1;
+            i++;
+        }else if(s[i] == '.'){
+            cout << 0;
         }
-        for (int i = 0; i < n-1; i++){
-            if(arr[i+1] >= arr[i]){
-                //
-            }else{
-                mid.push_back(arr[i] - arr[i+1]);
-                arr[i+1] = arr[i];
-            }
-        }
-        int x = mid.size()-1;
-        sort(mid.begin(),mid.end());
-        ll res = 0;
-        for(int i = 0; i < mid.size()-1; i++){
-            res += (mid[i+1] - mid[i])*(x-i+1);
-        }
-        cout << res << endl;
-        
-        
     }
+    
     return 0;
 }

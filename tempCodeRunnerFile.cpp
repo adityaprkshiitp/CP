@@ -1,2 +1,2 @@
 
-            cin >> arr[i];
+            ans[i] = s[i];

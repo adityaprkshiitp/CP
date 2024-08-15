@@ -1,27 +1,32 @@
-#include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
-int main()
-{
-    int n,count=0,i,j;
-    cout<<"Enter the no.of people  :  ";
-    cin>>n;
-    string a[n];
-    cout<<"Enter age or drink name\n";
-    for (j = 0; j < n; j++)
-    {
-        cin>>a[j];
-        // cout<<a[i]<<endl;
-    }
-    for ( i = 0; i < n; i++)
-    {
-        if( a[i] = 'ABSINTH' || a[i] = "BEER" || a[i] == "BRANDY" , a[i] == "CHAMPAGNE" ,a[i] == "GIN" ,a[i] 
-        == "RUM" ,a[i] == "SAKE" ,a[i] == "TEQUILA",a[i] == "VODKA",a[i] == "WHISKEY",a[i] == "WINE")
+typedef long long ll;
+typedef vector<int> vec;
+
+int main(){
+    #ifndef ONLINE_JUDGE
+    freopen("error.txt", "w", stderr);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+    int t; cin >> t;
+    while (t--){
+        int k; cin >> k;
+        vector<int> res(k);
+        for (int i = 0; i < k; i++)
         {
-            cout<<"HELLO";
-            count++;
+            cin >> res[i];
         }
+        for (int i = 1; i < k; i++)
+        {
+            int ans = res[i] | res[i-1];
+            cout << ans << ' ';
+        }
+        cout << endl;
+        
+        
+        
+        
     }
-    
-    cout<<count;
     return 0;
 }

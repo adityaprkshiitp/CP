@@ -11,14 +11,15 @@ int main(){
     #endif
     int t; cin >> t;
     while (t--){
-        int n; cin >> n;
+        int n,k; cin >> n >> k;
         vec arr(n);
-        int maxi = 0;
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++)
+        {
             cin >> arr[i];
-            maxi = max(maxi,arr[i]+i);
         }
-        cout << maxi << endl;
+        
+        
+        
     }
     return 0;
 }

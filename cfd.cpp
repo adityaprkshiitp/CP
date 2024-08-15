@@ -11,29 +11,21 @@ int main(){
     #endif
     int t; cin >> t;
     while(t--){
-        int x,y,z,k; cin >> x >> y >> z >> k;
-        ll count = 0;
-        for (int i = y; i > 0; i--)
-        {
-            for (int j = x; j > 0; j--)
-            {
-                for (int a = z; a > 0; a--)
-                {
-                    if(i*j*a == k){
-                        if(i < y && j < x && a < z){
-                            count+=8;
-                        }else if((i < y && j < x) || (j < x && a < z) || (a < z && i < y)){
-                            count+=4;
-                        }else if(i < y || j < x || a < z){
-                            count+=2;
-                        }
-                    }
-                }
-                
+        int n,x; cin >> n >> x;
+        int a = 1, b = 1, c = 1;
+        ll cnt = 0;
+        while( a + b + c <= x && ((a*b) + (b*c) + (c*a)) <= n){
+            int arr[3] = {a,b,c};
+            do{
+                cnt++;
+            } while (next_permutation(arr,arr+3));
+            c++;
+            if(a+b+c == x){
+                c--;
+                b++;
             }
-            
         }
-        cout << count << endl;
+        cout << cnt << endl;
     }
     
     return 0;
